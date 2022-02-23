@@ -128,7 +128,10 @@ public class Player : MonoBehaviour {
 		}
 		if (situation_kind == situations.SITUATION_KIND_AIR) {
 			if (index != -1) {
-				set_pos(body.position.x, platforms[index].GetComponent<Rigidbody2D>().position.y + platforms[index].GetComponent<BoxCollider2D>().bounds.size.y + .1);
+				set_pos(body.position.x, platforms[index].GetComponent<Rigidbody2D>().position.y 
+				+ platforms[index].GetComponent<BoxCollider2D>().offset.y 
+				+ platforms[index].GetComponent<BoxCollider2D>().bounds.size.y 
+				+ .1);
 				change_status(statuses.STATUS_KIND_LANDING);
 				return true;
 			}
@@ -145,13 +148,13 @@ public class Player : MonoBehaviour {
 		for (int i = 0; i < platforms.Length; i++) {
 			if (
 				(
-					body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x - platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
-					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x - platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))
+					body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
+					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))
 				) 
 				&& 
 				(
-					body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y - platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15) &&
-					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y - platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y)
+					body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15) &&
+					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y)
 				)
 				) {
 				return i;
