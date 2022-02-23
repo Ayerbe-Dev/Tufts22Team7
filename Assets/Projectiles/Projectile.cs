@@ -68,10 +68,10 @@ public class Projectile : MonoBehaviour {
         }
         else {
             for (int i = 0; i < platforms.Length; i++) {
-			    if ((body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
-					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))) && 
-	                (body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y / 2) &&
-					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y - platforms[i].GetComponent<BoxCollider2D>().bounds.size.y / 2))) {
+			    if ((body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x - platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
+					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x - platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))) && 
+	                (body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y - platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y / 2) &&
+					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y - platforms[i].GetComponent<BoxCollider2D>().offset.y - platforms[i].GetComponent<BoxCollider2D>().bounds.size.y / 2))) {
                     //Despawn the projectile without doing anything else
     			}
     		}

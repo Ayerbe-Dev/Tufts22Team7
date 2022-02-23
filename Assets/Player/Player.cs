@@ -145,13 +145,13 @@ public class Player : MonoBehaviour {
 		for (int i = 0; i < platforms.Length; i++) {
 			if (
 				(
-					body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
-					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x- (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))
+					body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x - platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
+					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x - platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))
 				) 
 				&& 
 				(
-					body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15) &&
-					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y)
+					body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y - platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15) &&
+					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y - platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y)
 				)
 				) {
 				return i;
