@@ -144,19 +144,37 @@ public class Player : MonoBehaviour {
 		return false;
 	}
 
+	Vector2 get_rotated_pos(float x, float y, float angle) {
+		Vector2 ret;
+		ret.x = x;
+		ret.y = y;
+
+		float sin = Mathf.Sin(angle * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(angle * Mathf.Deg2Rad);
+
+		float tx = ret.x;
+        float ty = ret.y;
+
+		ret.x = (cos * tx) - (sin * ty);
+        ret.y = (sin * tx) + (cos * ty);
+
+		return ret;
+	}
+
 	int get_platform_index() {
 		for (int i = 0; i < platforms.Length; i++) {
-			if (
-				(
-					body.position.x <= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)) &&
-					body.position.x >= (platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2))
-				) 
-				&& 
-				(
-					body.position.y <= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15) &&
-					body.position.y >= (platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y)
-				)
-				) {
+			Vector2 platform_edge1 = get_rotated_pos(
+				(float)(platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)),
+				(float)(platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)),
+				platforms[i].GetComponent<Rigidbody2D>().rotation
+			);
+		
+			Vector2 platform_edge2 = get_rotated_pos(
+				(float)(platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15),
+				(float)(platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y),
+				platforms[i].GetComponent<Rigidbody2D>().rotation
+			);
+			if ((body.position.x <= platform_edge1.x && body.position.x >= platform_edge1.y) && (body.position.y <= platform_edge2.x && body.position.y >= platform_edge2.y)) {
 				return i;
 			}
 		}
