@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum move {
-    MOVE_TYPE_STRAIGHT,
-    MOVE_TYPE_HOMING,
-};
-
 public class Projectile : MonoBehaviour {
 	public Rigidbody2D body;
 	public Collider2D bounds;
-    public move move_type;
+    public move_type move_type;
     public double speed;
     public double angle;
     public GameObject player;
     public GameObject[] platforms;
+
+    public void init(move_type move_type, double speed, double angle) {
+        this.move_type = move_type;
+        this.speed = speed;
+        this.angle = angle;
+    }
 
     void Start() {
         body = GetComponent<Rigidbody2D> ();
@@ -24,7 +25,7 @@ public class Projectile : MonoBehaviour {
     void FixedUpdate() {
         update_platforms();
         switch (move_type) {
-            case(move.MOVE_TYPE_STRAIGHT): {
+            case(move_type.MOVE_TYPE_STRAIGHT): {
                 move_straight();
             } break;
             default: {
@@ -43,9 +44,7 @@ public class Projectile : MonoBehaviour {
 	}
 
     void add_pos(double angle, double speed) {
-        Vector2 move;
-		move.x = (float)speed;
-		move.y = (float)0.0;
+        Vector2 move = utils.get_rotated_pos((float)speed, (float)0.0, (float)angle);
         body.MoveRotation((float)angle);
 		body.MovePosition(body.position + move * Time.fixedDeltaTime);
     }

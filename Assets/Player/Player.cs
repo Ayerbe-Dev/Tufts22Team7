@@ -2,45 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum statuses {
-	STATUS_KIND_WAIT, //Idle
-	STATUS_KIND_WALK, //Basic ground movement
-	STATUS_KIND_CROUCH_D, //Starting to crouch
-	STATUS_KIND_CROUCH, //Staying in a crouch
-	STATUS_KIND_CROUCH_U, //Rising from a crouch
-	//To clarify, I've worked with crouch animations before and as weird as having 3 different states for crouching is, it's 
-	//VERY important for basic movement to feel smooth, and this is the best way to do that
-	STATUS_KIND_JUMP_SQUAT, //Prejump frames, basically
-	STATUS_KIND_JUMP, //Actually jumping
-	STATUS_KIND_FALL, //Falling, either after a jump or walking off a platform
-	STATUS_KIND_HITSTUN,
-	STATUS_KIND_LANDING,
-	STATUS_KIND_MAX, //If I ever turn this into a jumptable, having a value that just says "This is the maximum value for the
-	//status list" is really convenient
-};
-
-public enum situations {
-	SITUATION_KIND_GROUND,
-	SITUATION_KIND_AIR,
-	SITUATION_KIND_MAX,
-};
-
-public enum buttons {
-	BUTTON_UP,
-	BUTTON_DOWN,
-	BUTTON_LEFT,
-	BUTTON_RIGHT,
-	BUTTON_JUMP,
-
-	BUTTON_MAX,
-};
-
-public struct Button {
-	public KeyCode mapping;
-	public bool on;
-	public bool changed;
-};
-
 public class Player : MonoBehaviour {
 	public Rigidbody2D body; //Unity uses this for physics, positions etc.
 	public Collider2D bounds;
@@ -144,32 +105,15 @@ public class Player : MonoBehaviour {
 		return false;
 	}
 
-	Vector2 get_rotated_pos(float x, float y, float angle) {
-		Vector2 ret;
-		ret.x = x;
-		ret.y = y;
-
-		float sin = Mathf.Sin(angle * Mathf.Deg2Rad);
-        float cos = Mathf.Cos(angle * Mathf.Deg2Rad);
-
-		float tx = ret.x;
-        float ty = ret.y;
-
-		ret.x = (cos * tx) - (sin * ty);
-        ret.y = (sin * tx) + (cos * ty);
-
-		return ret;
-	}
-
 	int get_platform_index() {
 		for (int i = 0; i < platforms.Length; i++) {
-			Vector2 platform_edge1 = get_rotated_pos(
+			Vector2 platform_edge1 = utils.get_rotated_pos(
 				(float)(platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x + (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)),
 				(float)(platforms[i].GetComponent<Rigidbody2D>().position.x + platforms[i].GetComponent<BoxCollider2D>().offset.x - (platforms[i].GetComponent<BoxCollider2D>().bounds.size.x / 2)),
 				platforms[i].GetComponent<Rigidbody2D>().rotation
 			);
 		
-			Vector2 platform_edge2 = get_rotated_pos(
+			Vector2 platform_edge2 = utils.get_rotated_pos(
 				(float)(platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y + .15),
 				(float)(platforms[i].GetComponent<Rigidbody2D>().position.y + platforms[i].GetComponent<BoxCollider2D>().offset.y + platforms[i].GetComponent<BoxCollider2D>().bounds.size.y),
 				platforms[i].GetComponent<Rigidbody2D>().rotation
