@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
-  - Enemy
+  - Heart
   layers:
   - Default
   - TransparentFX
