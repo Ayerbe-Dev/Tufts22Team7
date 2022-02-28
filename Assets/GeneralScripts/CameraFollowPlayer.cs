@@ -22,6 +22,10 @@ public class CameraFollowPlayer : MonoBehaviour
         {
             offsetTemp.x = 0;
         }
+        if (offsetTemp.x > 92)
+        {
+            offsetTemp.x = 92;
+        }
         transform.position = offsetTemp;
     }
 }
