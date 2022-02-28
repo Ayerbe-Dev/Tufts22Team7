@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 	public Rigidbody2D body; //Unity uses this for physics, positions etc.
 	public Collider2D bounds;
+	public SpriteRenderer sprite;
 	public float health;
 	public float max_health;
 	public float ammo; //idk what ammo looks like for jokes but we should prob include it
 	public float max_ammo;
 	public bool facing_right;
+	public int facing_dir;
 	public float reticle_angle; //Gonna use this for aiming 
 	public statuses status_kind; //The state the player is in (Jumping, taking damage, etc.)
 	public situations situation_kind; //If the player is in the air or on the ground
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour {
 	void Start() {
 		body = GetComponent<Rigidbody2D> ();
 		bounds = GetComponent<Collider2D> ();
+		sprite = GetComponent<SpriteRenderer>();
 		map_buttons();
 		health = max_health;  
 		ammo = max_ammo;
@@ -134,6 +137,7 @@ public class Player : MonoBehaviour {
 		process_aim();
 		process_inputs();
 		execute_status();
+		process_render();
 	}
 
 	bool can_act() {
@@ -152,7 +156,11 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void change_status(statuses new_status_kind) {
+	void process_render() {
+		sprite.flipX = !facing_right;
+	}
+
+	public void change_status(statuses new_status_kind) {
 		frame = 0.0;
 		execute_exit_status();
 		status_kind = new_status_kind;
@@ -543,7 +551,14 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_hitstun() {
-
+		if (frame > 40.0) {
+			if (situation_kind == situations.SITUATION_KIND_GROUND) {
+				change_status(statuses.STATUS_KIND_WAIT);
+			}
+			else {
+				change_status(statuses.STATUS_KIND_FALL);
+			}
+		}
 	}
 
 	void entry_status_hitstun() {

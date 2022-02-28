@@ -70,8 +70,8 @@ public class utils : MonoBehaviour {
 	    return ret;
     }
 
-    public static void spawn_projectile(Projectile projectile, Rigidbody2D pos, move_type move_type, double speed, double angle) {
-        Instantiate(projectile, pos.position, Quaternion.identity);
-        projectile.init(move_type, speed, angle);
+    public static void spawn_projectile(Projectile projectile, Rigidbody2D pos, move_type move_type, double speed, double angle, int active_time, int facing_dir) {
+        Projectile instance = Instantiate(projectile, pos.position, Quaternion.identity);
+        instance.init(move_type, speed, angle, active_time, facing_dir);
     }
 };
