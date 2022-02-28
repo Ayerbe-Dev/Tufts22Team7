@@ -93,3 +93,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008af87846115f641a35dad21fc19b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 0}
+  bounds: {fileID: 0}
+  health: 0
+  max_health: 0
+  facing_right: 0
+  frame: 0
+  attack_timer: 0
+  attack_interval: 0
+  walk_speed: 0
+  move_type: 0
+  projectile_speed: 0
+  projectile_angle: 0
+  platforms: []
+  status_kind: 0
+  projectile: {fileID: 0}
