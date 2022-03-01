@@ -78,13 +78,10 @@ public class utils : MonoBehaviour {
 	public static Sprite find_sprite(string name, double frame) {
 		Sprite[] sprites = Resources.FindObjectsOfTypeAll<Sprite>();
 		for (int i = 0; i < sprites.Length; i++) {
-			Debug.Log(sprites[i].name + ", " + sprites[i].texture + ", " + sprites[i].texture.name);
 			if (sprites[i].name == name + frame) {
-				Debug.Log("Found sprite " + name + frame + "!");
 				return sprites[i];
 			}
 		}
-		Debug.Log("Failed to find " + name + frame + "!");
 		return null;
 	}
 };

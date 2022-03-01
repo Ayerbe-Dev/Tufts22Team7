@@ -150,13 +150,7 @@ public class Player : MonoBehaviour {
 	}
 
 	bool is_anim_end() {
-		if (utils.find_sprite(anim_kind, frame) == null) {
-			return true;
-		}
-		else {
-			Debug.Log(frame);
-			return false;
-		}
+		return (utils.find_sprite(anim_kind, frame) == null);
 	}
 
 	void process_aim() {
@@ -168,7 +162,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void process_render() {
-		sprite.sprite = utils.find_sprite(anim_kind, frame);
+//		sprite.sprite = utils.find_sprite(anim_kind, frame);
 		sprite.flipX = !facing_right;
 	}
 
