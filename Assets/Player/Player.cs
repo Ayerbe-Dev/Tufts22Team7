@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public Rigidbody2D body; //Unity uses this for physics, positions etc.
 	public Collider2D bounds;
 	public SpriteRenderer sprite;
+	public string anim_kind;
 	public float health;
 	public float max_health;
 	public float ammo; //idk what ammo looks like for jokes but we should prob include it
@@ -148,6 +149,10 @@ public class Player : MonoBehaviour {
 		return true;
 	}
 
+	bool is_anim_end() {
+		return(utils.find_sprite(anim_kind, frame) == null);
+	}
+
 	void process_aim() {
 
 	}
@@ -157,6 +162,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void process_render() {
+		sprite.sprite = utils.find_sprite(anim_kind, frame);
 		sprite.flipX = !facing_right;
 	}
 
@@ -281,6 +287,17 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void change_anim(string name) {
+		frame = 0.0;
+		anim_kind = name;
+	}
+
+	void check_loop_anim() {
+		if (is_anim_end()) {
+			frame = 0.0;
+		}
+	}
+
 	void add_pos(double x, double y) {
 		Vector2 move;
 		move.x = (float)x;
@@ -387,6 +404,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_wait() {
+		check_loop_anim();
 		if (common_ground_status_act()) {
 			return;
 		}
@@ -397,7 +415,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void entry_status_wait() {
-
+		change_anim("wait");
 	}
 
 	void exit_status_wait() {
@@ -405,6 +423,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_walk() {
+		check_loop_anim();
 		if (common_ground_status_act()) {
 			return;
 		}
@@ -422,7 +441,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void entry_status_walk() {
-
+		change_anim("walk");
 	}
 
 	void exit_status_walk() {
@@ -436,13 +455,13 @@ public class Player : MonoBehaviour {
 		if (!check_button_on(buttons.BUTTON_DOWN)) {
 			change_status(statuses.STATUS_KIND_CROUCH_U);
 		}
-		if (frame > 3.0) {
+		if (is_anim_end()) {
 			change_status(statuses.STATUS_KIND_CROUCH);
 		}
 	}
 
 	void entry_status_crouch_d() {
-
+		change_anim("crouch_d");
 	}
 
 	void exit_status_crouch_d() {
@@ -450,6 +469,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_crouch() {
+		check_loop_anim();
 		if (common_ground_status_act()) {
 			return;
 		}
@@ -459,7 +479,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void entry_status_crouch() {
-
+		change_anim("crouch");
 	}
 
 	void exit_status_crouch() {
@@ -470,13 +490,13 @@ public class Player : MonoBehaviour {
 		if (common_ground_status_act()) {
 			return;
 		}
-		if (frame > 3.0) {
+		if (is_anim_end()) {
 			change_status(statuses.STATUS_KIND_WAIT);
 		}
 	}
 
 	void entry_status_crouch_u() {
-
+		change_anim("crouch_u");
 	}
 
 	void exit_status_crouch_u() {
@@ -486,12 +506,13 @@ public class Player : MonoBehaviour {
 	void status_jump() {
 		apply_air_movement();
 
-		if (air_y_speed < 0.0) {
+		if (is_anim_end()) {
 			change_status(statuses.STATUS_KIND_FALL);
 		}
 	}
 
 	void entry_status_jump() {
+		change_anim("jump");
 		if (check_button_on(buttons.BUTTON_RIGHT)) {
 			x_speed = 3.0;
 		}
@@ -522,12 +543,13 @@ public class Player : MonoBehaviour {
 			x_speed *= 1.16;
 		}
 		add_pos(x_speed, 0.0);
-		if (frame == 3.0) {
+		if (is_anim_end()) {
 			change_status(statuses.STATUS_KIND_JUMP);
 		}
 	}
 
 	void entry_status_jumpsquat() {
+		change_anim("jump_squat");
 		x_speed *= init_jump_x_speed;
 	}
 
@@ -536,6 +558,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_fall() {
+		check_loop_anim();
 		if (handle_platforms()) {
 			return;
 		}
@@ -543,6 +566,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void entry_status_fall() {
+		change_anim("fall");
 		situation_kind = situations.SITUATION_KIND_AIR;
 	}
 
@@ -551,7 +575,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_hitstun() {
-		if (frame > 40.0) {
+		if (is_anim_end()) {
 			if (situation_kind == situations.SITUATION_KIND_GROUND) {
 				change_status(statuses.STATUS_KIND_WAIT);
 			}
@@ -562,7 +586,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void entry_status_hitstun() {
-
+		change_anim("hitstun");
 	}
 
 	void exit_status_hitstun() {
@@ -580,12 +604,13 @@ public class Player : MonoBehaviour {
 			change_status(statuses.STATUS_KIND_WALK);
 			return;
 		}
-		if (frame > 3.0) {
+		if (is_anim_end()) {
 			change_status(statuses.STATUS_KIND_WAIT);
 		}
 	}
 
 	void entry_status_landing() {
+		change_anim("landing");
 		situation_kind = situations.SITUATION_KIND_GROUND;
 	}
 

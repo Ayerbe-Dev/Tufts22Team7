@@ -74,4 +74,15 @@ public class utils : MonoBehaviour {
         Projectile instance = Instantiate(projectile, pos.position, Quaternion.identity);
         instance.init(move_type, speed, angle, active_time, facing_dir);
     }
+
+	public static Sprite find_sprite(string name, double frame) {
+		Sprite[] sprites = Resources.FindObjectsOfTypeAll<Sprite>();
+
+		for (int i = 0; i < sprites.Length; i++) {
+			if (sprites[i].name == name + frame) {
+				return sprites[i];
+			}
+		}
+		return null;
+	}
 };
