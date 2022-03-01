@@ -150,7 +150,13 @@ public class Player : MonoBehaviour {
 	}
 
 	bool is_anim_end() {
-		return(utils.find_sprite(anim_kind, frame) == null);
+		if (utils.find_sprite(anim_kind, frame) == null) {
+			return true;
+		}
+		else {
+			Debug.Log(frame);
+			return false;
+		}
 	}
 
 	void process_aim() {
