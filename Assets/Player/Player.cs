@@ -87,7 +87,6 @@ public class Player : MonoBehaviour {
 		if (index == -1) {
 			if (situation_kind == situations.SITUATION_KIND_GROUND && body.position.y - (bounds.bounds.size.y / 2.0) > -5.0) {
 				change_status(statuses.STATUS_KIND_FALL);
-				Debug.Log("L + ratio + you should be falling off");
 				return true;
 			}
 		}
@@ -162,7 +161,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void process_render() {
-//		sprite.sprite = utils.find_sprite(anim_kind, frame);
+		sprite.sprite = utils.find_sprite(anim_kind, frame);
 		sprite.flipX = !facing_right;
 	}
 
@@ -359,7 +358,7 @@ public class Player : MonoBehaviour {
 			}
 			add_pos(x_speed, 0.0);
 		}
-		if (check_button_trigger(buttons.BUTTON_JUMP)) {
+		if (check_button_trigger(buttons.BUTTON_JUMP) || check_button_trigger(buttons.BUTTON_UP)) {
 			change_status(statuses.STATUS_KIND_JUMP_SQUAT);
 			return true;
 		}
@@ -388,11 +387,17 @@ public class Player : MonoBehaviour {
 			}
 		}
 		if (check_button_on(buttons.BUTTON_RIGHT)) {
-			if (x_speed < air_max_x_speed) {
+			if (x_speed >= 0.0 && x_speed < 1.2) {
+				x_speed = clamp_d(x_speed, x_speed + 0.3, air_max_x_speed);
+			}
+			else if (x_speed < air_max_x_speed) {
 				x_speed = clamp_d(x_speed, x_speed + 0.01, air_max_x_speed);
 			}
 		}
 		if (check_button_on(buttons.BUTTON_LEFT)) {
+			if (x_speed <= 0.0 && x_speed > -1.2) {
+				x_speed = clamp_d(air_max_x_speed * -1.0, x_speed - 0.3, x_speed);
+			}
 			if (x_speed > air_max_x_speed * -1.0) {
 				x_speed = clamp_d(air_max_x_speed * -1.0, x_speed - 0.01, x_speed);
 			}

@@ -53,6 +53,12 @@ public struct Button {
 };
 
 public class utils : MonoBehaviour {
+	Object[] sprites;
+
+	void Start() {
+		sprites = Resources.LoadAll("anims");
+	}
+
     public static Vector2 get_rotated_pos(float x, float y, float angle) {
 	    Vector2 ret;
 	    ret.x = x;
