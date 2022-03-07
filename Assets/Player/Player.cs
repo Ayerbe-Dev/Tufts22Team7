@@ -351,10 +351,10 @@ public class Player : MonoBehaviour {
 		int player_y = (int)body.position.y;
 		int mouse_x = (int)Input.mousePosition.x;
 		int mouse_y = (int)Input.mousePosition.y;
-		float x_diff = player_x - mouse_x;
-		float y_diff = player_y - mouse_y;
-		float angle = Mathf.Atan2(y_diff, x_diff) * (float)180.0 / Mathf.PI;
-        utils.spawn_projectile(projectile, body, move_type.MOVE_TYPE_STRAIGHT, 4.0, 90, 480, facing_dir, true);
+		float x_diff = mouse_x - player_x;
+		float y_diff = mouse_y - player_y;
+		float angle = Mathf.Atan2(y_diff, x_diff) * ((float)180.0 / Mathf.PI);
+        utils.spawn_projectile(projectile, body, move_type.MOVE_TYPE_STRAIGHT, 4.0, angle, 480, facing_dir, true);
 	}
 
 	double clamp_d(double min, double val, double max) {
