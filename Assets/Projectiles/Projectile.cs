@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour {
     public GameObject[] enemies;
     public GameObject[] platforms;
 
-    public void init(move_type move_type, double speed, double angle, int active_time, int facing_dir, bool player_owned) {
+    public void init(move_type move_type, double speed, int angle, int active_time, int facing_dir, bool player_owned) {
         this.move_type = move_type;
         this.speed = speed;
         this.angle = angle;
@@ -138,7 +138,7 @@ public class Projectile : MonoBehaviour {
 
     void process_hit_player() {
         Player player_instance = player.GetComponent<Player>();
-        if (!(player_instance.hit_timer == 0)) {
+        if (player_instance.hit_timer == 0) {
             player_instance.change_status(statuses.STATUS_KIND_HITSTUN);
         }
         despawn(true);
@@ -155,6 +155,9 @@ public class Projectile : MonoBehaviour {
     }
 
     void despawn(bool hit) {
+        if (hit) {
+            //particle effects here
+        }
         Destroy(this.gameObject);
     }
 }

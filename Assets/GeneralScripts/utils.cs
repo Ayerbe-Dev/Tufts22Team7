@@ -81,7 +81,7 @@ public class utils : MonoBehaviour {
 
     public static void spawn_projectile(Projectile projectile, Rigidbody2D pos, move_type move_type, double speed, double angle, int active_time, int facing_dir, bool player_owned) {
         Projectile instance = Instantiate(projectile, pos.position, Quaternion.identity);
-        instance.init(move_type, speed, angle * facing_dir, active_time, facing_dir, player_owned);
+        instance.init(move_type, speed, (int)angle * facing_dir, active_time, facing_dir, player_owned);
     }
 
 	public static Sprite find_sprite(string name, int frame) {

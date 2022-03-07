@@ -40,7 +40,9 @@ public class Player : MonoBehaviour {
 		bounds = GetComponent<Collider2D> ();
 		sprite = GetComponent<SpriteRenderer>();
 		map_buttons();
+		max_health = 3;
 		health = max_health;  
+		max_ammo = 20;
 		ammo = max_ammo;
 		gravity = 0.09;
 		init_jump_speed = 3.5;
@@ -141,6 +143,12 @@ public class Player : MonoBehaviour {
 		if (hit_timer > 0) {
 			hit_timer--;
 		}
+		if (facing_right) {
+			facing_dir = 1;
+		}
+		else {
+			facing_dir = -1;
+		}
 		update_platforms();
 		poll_buttons();
 
@@ -162,7 +170,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void process_aim() {
-		if (can_act() && shoot_timer == 0 && Input.GetMouseButton(1)) {
+		if (can_act() && shoot_timer == 0 && Input.GetMouseButton(0) && ammo != 0) {
+			ammo--;
 			shoot_timer = shoot_interval;
 			shoot();
 		}
@@ -338,7 +347,14 @@ public class Player : MonoBehaviour {
 	}
 	
 	void shoot() {
-        utils.spawn_projectile(projectile, body, move_type.MOVE_TYPE_STRAIGHT, 4.0, 10.0, 480, facing_dir, true);
+		int player_x = (int)body.position.x;
+		int player_y = (int)body.position.y;
+		int mouse_x = (int)Input.mousePosition.x;
+		int mouse_y = (int)Input.mousePosition.y;
+		float x_diff = player_x - mouse_x;
+		float y_diff = player_y - mouse_y;
+		float angle = Mathf.Atan2(y_diff, x_diff) * (float)180.0 / Mathf.PI;
+        utils.spawn_projectile(projectile, body, move_type.MOVE_TYPE_STRAIGHT, 4.0, 90, 480, facing_dir, true);
 	}
 
 	double clamp_d(double min, double val, double max) {
@@ -608,6 +624,7 @@ public class Player : MonoBehaviour {
 	void status_hitstun() {
 		if (health == 0) {
 			change_status(statuses.STATUS_KIND_DEAD);
+			return;
 		}
 		if (situation_kind == situations.SITUATION_KIND_GROUND) {
 			if (is_anim_end()) {
@@ -615,7 +632,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 		else {
-//			apply_air_movement();
+			x_speed *= 0.96;
 			if (is_anim_end()) {
 				change_status(statuses.STATUS_KIND_FALL);
 			}

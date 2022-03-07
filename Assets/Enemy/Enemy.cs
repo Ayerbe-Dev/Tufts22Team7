@@ -231,7 +231,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void entry_status_walk() {
-        change_anim("walk");
+        change_anim("enemy_walk");
     }
 
     void exit_status_walk() {
@@ -245,7 +245,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void entry_status_enraged() {
-        change_anim("enraged");
+        change_anim("enemy_enraged");
         rage_timer = 600;
         rage_mul += 0.2;
     }
@@ -265,7 +265,7 @@ public class Enemy : MonoBehaviour {
 
 	void entry_status_hitstun() {
 		health--;
-		change_anim("hitstun");
+		change_anim("enemy_hitstun");
 	}
 
 	void exit_status_hitstun() {
@@ -273,16 +273,17 @@ public class Enemy : MonoBehaviour {
 	}
 
     void status_attack() {
-        if (frame >= 20.0 && !attacked_in_status) {
-            utils.spawn_projectile(projectile, body, move_type, 2.0, 10.0, 480, facing_dir, false);
+//        if (frame >= 20.0 && !attacked_in_status) {
+            utils.spawn_projectile(projectile, body, move_type, 2.0, 10, 480, facing_dir, false);
             attacked_in_status = true;
-        }
+//        }
         if (is_anim_end()) {
             change_status(statuses.STATUS_KIND_WALK);
         }
     }
 
     void entry_status_attack() {
+        change_anim("enemy_attack");
         attacked_in_status = false;
     }
 
@@ -297,7 +298,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void entry_status_dead() {
-		change_anim("dead");
+		change_anim("enemy_dead");
 	}
 
 	void exit_status_dead() {
