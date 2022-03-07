@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 	public Rigidbody2D body; //Unity uses this for physics, positions etc.
@@ -24,10 +25,14 @@ public class Player : MonoBehaviour {
 	public double init_jump_x_speed;
 	public double init_jump_speed;
 	public double walk_speed;
+	public int shoot_interval;
+	public int shoot_timer;
+	public int hit_timer;
 	public double max_fall_speed; //How fast the player can be falling before gravity stops having an effect
 	public Button[] button = new Button[(int)buttons.BUTTON_MAX]; //i've been working on this for ~3 hours and friendship already
 	//ended with unity
 	public GameObject[] platforms;
+	public Projectile projectile;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -42,7 +47,9 @@ public class Player : MonoBehaviour {
 		init_jump_x_speed = 0.7;
 		max_fall_speed = -2.0;
 		air_max_x_speed = 2.0;
+		shoot_interval = 30;
 		walk_speed = 1.2;
+		hit_timer = 0;
 		status_kind = statuses.STATUS_KIND_WAIT;
 	}
 
@@ -131,11 +138,13 @@ public class Player : MonoBehaviour {
 	// FixedUpdate is called once per frame
 	void FixedUpdate() {
 		frame++;
+		if (hit_timer > 0) {
+			hit_timer--;
+		}
 		update_platforms();
 		poll_buttons();
 
 		process_aim();
-		process_inputs();
 		execute_status();
 		process_render();
 	}
@@ -149,20 +158,28 @@ public class Player : MonoBehaviour {
 	}
 
 	bool is_anim_end() {
-		return (utils.find_sprite(anim_kind, frame) == null);
+		return (utils.find_sprite(anim_kind, (int)frame) == null);
 	}
 
 	void process_aim() {
-
-	}
-
-	void process_inputs() {
-
+		if (can_act() && shoot_timer == 0 && Input.GetMouseButton(1)) {
+			shoot_timer = shoot_interval;
+			shoot();
+		}
+		if (shoot_timer != 0) {
+			shoot_timer--;
+		}
 	}
 
 	void process_render() {
-		sprite.sprite = utils.find_sprite(anim_kind, frame);
+		sprite.sprite = utils.find_sprite(anim_kind, (int)frame);
 		sprite.flipX = !facing_right;
+		if (hit_timer != 0) {
+			//make the sprite partially transparent
+		}
+		else {
+			//don't
+		}
 	}
 
 	public void change_status(statuses new_status_kind) {
@@ -204,6 +221,9 @@ public class Player : MonoBehaviour {
 			case (statuses.STATUS_KIND_LANDING) : {
 				status_landing();
 			} break;
+			case (statuses.STATUS_KIND_DEAD) : {
+				status_dead();
+			} break;
 			default: {
 
 			} break;
@@ -241,6 +261,9 @@ public class Player : MonoBehaviour {
 			} break;
 			case (statuses.STATUS_KIND_LANDING) : {
 				entry_status_landing();
+			} break;
+			case (statuses.STATUS_KIND_DEAD) : {
+				entry_status_dead();
 			} break;
 			default: {
 
@@ -280,6 +303,9 @@ public class Player : MonoBehaviour {
 			case (statuses.STATUS_KIND_LANDING) : {
 				exit_status_landing();
 			} break;
+			case (statuses.STATUS_KIND_DEAD) : {
+				exit_status_dead();
+			} break;
 			default: {
 
 			} break;
@@ -312,7 +338,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	void shoot() {
-
+        utils.spawn_projectile(projectile, body, move_type.MOVE_TYPE_STRAIGHT, 4.0, 10.0, 480, facing_dir, true);
 	}
 
 	double clamp_d(double min, double val, double max) {
@@ -580,22 +606,29 @@ public class Player : MonoBehaviour {
 	}
 
 	void status_hitstun() {
-		if (is_anim_end()) {
-			if (situation_kind == situations.SITUATION_KIND_GROUND) {
+		if (health == 0) {
+			change_status(statuses.STATUS_KIND_DEAD);
+		}
+		if (situation_kind == situations.SITUATION_KIND_GROUND) {
+			if (is_anim_end()) {
 				change_status(statuses.STATUS_KIND_WAIT);
 			}
-			else {
+		}
+		else {
+//			apply_air_movement();
+			if (is_anim_end()) {
 				change_status(statuses.STATUS_KIND_FALL);
 			}
 		}
 	}
 
 	void entry_status_hitstun() {
+		health--;
 		change_anim("hitstun");
 	}
 
 	void exit_status_hitstun() {
-		
+		hit_timer = 30;
 	}
 
 	void status_landing() {
@@ -620,6 +653,20 @@ public class Player : MonoBehaviour {
 	}
 
 	void exit_status_landing() {
+
+	}
+
+	void status_dead() {
+		if (is_anim_end()) {
+			SceneManager.LoadScene("GameOverScene");
+		}
+	}
+
+	void entry_status_dead() {
+		change_anim("dead");
+	}
+
+	void exit_status_dead() {
 
 	}
 }

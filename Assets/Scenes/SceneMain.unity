@@ -2347,6 +2347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834e034f715921b4ea2c445733944377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_owned: 0
   body: {fileID: 1128610398}
   bounds: {fileID: 1128610397}
   sprite: {fileID: 1128610402}
@@ -2357,6 +2358,7 @@ MonoBehaviour:
   angle: 0
   life: 0
   player: {fileID: 0}
+  enemies: []
   platforms: []
 --- !u!212 &1128610402 stripped
 SpriteRenderer:
@@ -4058,6 +4060,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1128610400}
     - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
+    - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
+      propertyPath: status_kind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: attack_interval
       value: 30
       objectReference: {fileID: 0}
@@ -4083,7 +4093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.056555927
+      value: 0.056555748
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4091,15 +4101,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5157,6 +5167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1535578672329414225, guid: 3c072130af4b3c94ca0df71c846b9eb8, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
     - target: {fileID: 1738826558034281740, guid: 3c072130af4b3c94ca0df71c846b9eb8, type: 3}
       propertyPath: m_RootOrder
       value: 0

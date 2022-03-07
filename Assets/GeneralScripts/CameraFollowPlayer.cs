@@ -28,4 +28,11 @@ public class CameraFollowPlayer : MonoBehaviour
         }
         transform.position = offsetTemp;
     }
+
+    public bool is_on_camera(Vector2 pos, Vector2 offset) {
+        double left_bound = player.transform.position.x - this.offset.x;
+        double right_bound = player.transform.position.x + this.offset.x;
+        return ((right_bound >= pos.x + offset.x && left_bound <= pos.x + offset.x)
+        || (right_bound >= pos.x - offset.x && left_bound <= pos.x - offset.x));
+    }
 }
