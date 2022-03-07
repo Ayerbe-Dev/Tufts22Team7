@@ -26,6 +26,9 @@ public enum statuses {
 	STATUS_KIND_FALL, //Falling, either after a jump or walking off a platform
 	STATUS_KIND_HITSTUN,
 	STATUS_KIND_LANDING,
+	STATUS_KIND_DEAD,
+	STATUS_KIND_ENRAGED,
+	STATUS_KIND_ATTACK,
 	STATUS_KIND_MAX, //If I ever turn this into a jumptable, having a value that just says "This is the maximum value for the
 	//status list" is really convenient
 };
@@ -53,6 +56,12 @@ public struct Button {
 };
 
 public class utils : MonoBehaviour {
+	Object[] sprites;
+
+	void Start() {
+		sprites = Resources.LoadAll("anims");
+	}
+
     public static Vector2 get_rotated_pos(float x, float y, float angle) {
 	    Vector2 ret;
 	    ret.x = x;
@@ -70,12 +79,12 @@ public class utils : MonoBehaviour {
 	    return ret;
     }
 
-    public static void spawn_projectile(Projectile projectile, Rigidbody2D pos, move_type move_type, double speed, double angle, int active_time, int facing_dir) {
+    public static void spawn_projectile(Projectile projectile, Rigidbody2D pos, move_type move_type, double speed, double angle, int active_time, int facing_dir, bool player_owned) {
         Projectile instance = Instantiate(projectile, pos.position, Quaternion.identity);
-        instance.init(move_type, speed, angle, active_time, facing_dir);
+        instance.init(move_type, speed, angle * facing_dir, active_time, facing_dir, player_owned);
     }
 
-	public static Sprite find_sprite(string name, double frame) {
+	public static Sprite find_sprite(string name, int frame) {
 		Sprite[] sprites = Resources.FindObjectsOfTypeAll<Sprite>();
 		for (int i = 0; i < sprites.Length; i++) {
 			if (sprites[i].name == name + frame) {
