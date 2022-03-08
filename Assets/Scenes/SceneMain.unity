@@ -735,6 +735,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: walk_speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4117,12 +4121,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1128610400}
     - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
+      propertyPath: walk_speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: game_camera
       value: 
       objectReference: {fileID: 34495403}
     - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: status_kind
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
+      propertyPath: walk_interval
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 392760416231580691, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: attack_interval
@@ -4142,11 +4154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.55
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.15
+      value: -1.12
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
       propertyPath: m_LocalPosition.z
