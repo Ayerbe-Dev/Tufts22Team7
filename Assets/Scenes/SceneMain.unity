@@ -884,9 +884,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1197134045}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 1197134046}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1197134043}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -1145,8 +1165,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1231815751}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 1231815752}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1231815749}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: status_kind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: attack_interval
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
@@ -1721,6 +1773,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
+--- !u!212 &591517099 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1476310703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &591517101 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1476310703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &591517102 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1476310703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &617289177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4521531194347283213, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
@@ -2820,6 +2887,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &911816837 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1862801612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &911816839 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1862801612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &911816840 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1862801612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915399920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,9 +3171,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -3482,6 +3572,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
+--- !u!212 &1197134043 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 257117258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1197134045 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 257117258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1197134046 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 257117258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1208401784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4521531194347283213, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
@@ -3548,6 +3653,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
+--- !u!212 &1231815749 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 334828525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1231815751 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 334828525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1231815752 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 334828525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1235529290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3623,6 +3743,21 @@ BoxCollider2D:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: f8f16767e99f91246ab2ae7ba7765fb3, type: 3}
   m_PrefabInstance: {fileID: 1802458299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1322449229 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1451291990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1322449231 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1451291990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1322449232 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1451291990}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329227079
 GameObject:
@@ -3969,9 +4104,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1607129472}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 1607129473}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1607129470}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -4381,9 +4536,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1322449231}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 1322449232}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1322449229}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -4626,8 +4801,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 591517101}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 591517102}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 591517099}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: status_kind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: attack_interval
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
@@ -5002,6 +5205,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
+--- !u!212 &1607129470 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1367413109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1607129472 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1367413109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1607129473 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1367413109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1611637652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5325,6 +5543,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1670618130 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 363273629260555640, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1953066682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1670618132 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6374358452783250221, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1953066682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1670618133 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6135064351398804900, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+  m_PrefabInstance: {fileID: 1953066682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1751133772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4521531194347283213, guid: c444c3c1e517b614fb3dfcd3dc2ba53f, type: 3}
@@ -5500,8 +5733,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 911816839}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 911816840}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 911816837}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: status_kind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: attack_interval
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile_angle
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
@@ -5517,7 +5782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.056555927
+      value: 0.0565557
       objectReference: {fileID: 0}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5900,9 +6165,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1670618132}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 1670618133}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1670618130}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1128610400}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: walk_speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 392760416231580691, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
+      propertyPath: game_camera
+      value: 
+      objectReference: {fileID: 34495403}
     - target: {fileID: 2198220327519180115, guid: ab761e175b9af432299b7cc71aafb520, type: 3}
       propertyPath: m_RootOrder
       value: 23

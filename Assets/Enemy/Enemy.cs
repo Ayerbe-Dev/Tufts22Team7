@@ -35,9 +35,11 @@ public class Enemy : MonoBehaviour {
 		bounds = GetComponent<Collider2D> ();
         sprite = GetComponent<SpriteRenderer>();
         game_camera = GetComponent<CameraFollowPlayer>();
+        health = max_health;
         rage_mul = 1.0;
         facing_dir = 1;
         facing_right = true;
+        status_kind = statuses.STATUS_KIND_WALK;
     }
 
     // Update is called once per frame

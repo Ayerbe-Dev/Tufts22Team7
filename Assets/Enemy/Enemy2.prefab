@@ -52,7 +52,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 23.603092, y: 16.4}
+    oldSize: {x: 1.5735395, y: 1.0933334}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -94,24 +94,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008af87846115f641a35dad21fc19b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 0}
-  bounds: {fileID: 0}
-  sprite: {fileID: 0}
+  body: {fileID: 6374358452783250221}
+  bounds: {fileID: 6135064351398804900}
+  sprite: {fileID: 363273629260555640}
   anim_kind: 
   health: 0
-  max_health: 0
+  max_health: 3
   facing_dir: 0
   facing_right: 0
   frame: 0
   attack_timer: 0
   attack_interval: 0
   walk_timer: 0
-  walk_interval: 0
-  walk_speed: 0
+  walk_interval: 5
+  walk_speed: 30
   rage_timer: 0
   projectile_angle: 0
   rage_mul: 0
   attacked_in_status: 0
+  id: 1
   move_type: 0
   platforms: []
   status_kind: 0
