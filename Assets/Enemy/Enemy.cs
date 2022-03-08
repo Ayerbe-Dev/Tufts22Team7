@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
     public int projectile_angle;
     public double rage_mul;
     public bool attacked_in_status;
+    public int id;
 
     public move_type move_type;
     public GameObject[] platforms;
@@ -145,7 +146,7 @@ public class Enemy : MonoBehaviour {
 
     void change_anim(string name) {
 		frame = 0.0;
-		anim_kind = name;
+		anim_kind = "enemy" + id + "_" + name;
 	}
 
 	void check_loop_anim() {
@@ -231,7 +232,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void entry_status_walk() {
-        change_anim("enemy_walk");
+        change_anim("walk");
     }
 
     void exit_status_walk() {
@@ -245,7 +246,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void entry_status_enraged() {
-        change_anim("enemy_enraged");
+        change_anim("enraged");
         rage_timer = 600;
         rage_mul += 0.2;
     }
@@ -265,7 +266,7 @@ public class Enemy : MonoBehaviour {
 
 	void entry_status_hitstun() {
 		health--;
-		change_anim("enemy_hitstun");
+		change_anim("hitstun");
 	}
 
 	void exit_status_hitstun() {
@@ -283,7 +284,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void entry_status_attack() {
-        change_anim("enemy_attack");
+        change_anim("attack");
         attacked_in_status = false;
     }
 
@@ -298,7 +299,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void entry_status_dead() {
-		change_anim("enemy_dead");
+		change_anim("dead");
 	}
 
 	void exit_status_dead() {
